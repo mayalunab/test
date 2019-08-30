@@ -1,0 +1,259 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+\hypersetup{unicode=true,
+            pdftitle={POLS 311 HW 1: Exclusionary Attitudes},
+            colorlinks=true,
+            linkcolor=red,
+            citecolor=Blue,
+            urlcolor=red,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{POLS 311 HW 1: Exclusionary Attitudes}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{}
+    \preauthor{}\postauthor{}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{DUE FEBRUARY 7TH}
+
+
+\begin{document}
+\maketitle
+
+A political scientist conducted a randomized field experiment assessing
+the extent to which individuals living in suburban communities around
+Boston, Massachusetts, and their views were affected by exposure to
+demographic change.
+
+This exercise is based on: Enos, R. D. 2014.
+``\href{http://dx.doi.org/10.1073/pnas.1317670111}{Causal Effect of
+Intergroup Contact on Exclusionary Attitudes.}'' \emph{Proceedings of
+the National Academy of Sciences} 111(10): 3699--3704.
+
+Subjects in the experiment were individuals riding on the commuter rail
+line and overwhelmingly white. Every morning, multiple trains pass
+through various stations in suburban communities that were used for this
+study. For pairs of trains leaving the same station at roughly the same
+time, one was randomly assigned to receive the treatment and one was
+designated as a control. By doing so all the benefits of randomization
+apply for this dataset.
+
+The treatment in this experiment was the presence of two native
+Spanish-speaking `confederates' (a term used in experiments to indicate
+that these individuals worked for the researcher, unbeknownst to the
+subjects) on the platform each morning prior to the train's arrival. The
+presence of these confederates, who would appear as Hispanic foreigners
+to the subjects, was intended to simulate the kind of demographic change
+anticipated for the United States in coming years. For those individuals
+in the control group, no such confederates were present on the platform.
+The treatment was administered for 10 days. Participants were asked
+questions related to immigration policy both before the experiment
+started and after the experiment had ended. The names and descriptions
+of variables in the data set \texttt{boston.csv} are:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.25\columnwidth}\raggedright\strut
+Name\strut
+\end{minipage} & \begin{minipage}[b]{0.68\columnwidth}\raggedright\strut
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{age}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Age of individual at time of experiment\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{male}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Sex of individual, male (1) or female (0)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{income}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Income group in dollars (not exact income)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{white}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Indicator variable for whether individual identifies as white (1) or not
+(0)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{college}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Indicator variable for whether individual attended college (1) or not
+(0)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{usborn}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Indicator variable for whether individual is born in the US (1) or not
+(0)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{treatment}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Indicator variable for whether an individual was treated (1) or not
+(0)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{ideology}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Self-placement on ideology spectrum from Very Liberal (1) through
+Moderate (3) to Very Conservative (5)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{numberim.pre}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Policy opinion on question about increasing the number immigrants
+allowed in the country from Increased (1) to Decreased (5)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{numberim.post}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Same question as above, asked later\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{remain.pre}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Policy opinion on question about allowing the children of undocumented
+immigrants to remain in the country from Allow (1) to Not Allow
+(5)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{remain.post}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Same question as above, asked later\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{english.pre}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Policy opinion on question about passing a law establishing English as
+the official language from Not Favor (1) to Favor (5)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.25\columnwidth}\raggedright\strut
+\texttt{english.post}\strut
+\end{minipage} & \begin{minipage}[t]{0.68\columnwidth}\raggedright\strut
+Same question as above, asked later\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\subsection{Question 1}\label{question-1}
+
+The benefit of randomly assigning individuals to the treatment or
+control groups is that the two groups should be similar, on average, in
+terms of their covariates. This is referred to as `covariate balance.'
+Show that the treatment and control groups are balanced with respect to
+the income variable (\texttt{income}) by comparing its \texttt{mean} and
+\texttt{median} between those in the treatment group and those in the
+control group. Also, compare the proportion of males (\texttt{male}) in
+the treatment and control groups. Interpret these two numbers.
+\emph{Note, you do not need to use any formal statistics to test the
+difference. You need to use your own logic and explain in words your
+conclusions}
+
+\subsection{Question 2}\label{question-2}
+
+Individuals in the experiment were asked a series of questions both at
+the beginning and the end of the experiment. One such question was ``Do
+you think the number of immigrants from Mexico who are permitted to come
+to the United States to live should be increased, left the same, or
+decreased?'' The response to this question prior to the experiment is in
+the variable \texttt{numberim.pre}. The response to this question after
+the experiment is in the variable \texttt{numberim.post}. In both cases
+the variable is coded on a 1 -- 5 scale. Responses with values of 1 are
+inclusionary (`pro-immigration') and responses with values of 5 are
+exclusionary (`anti-immigration'). Compute the average treatment effect
+on the change in attitudes about immigration. That is, how does the mean
+change in attitudes about immigration policy for those in the control
+group compare to those in the treatment group. Interpret the result.
+\emph{Again, no use of formal statistics is required. You must discuss
+the effect size using logic}
+
+\subsection{Question 3}\label{question-3}
+
+Does having attended college influence the effect of being exposed to
+`outsiders' on exclusionary attitudes? Another way to ask the same
+question is this: is there evidence of a differential impact of
+treatment, conditional on attending college versus not attending
+college? Calculate the necessary quantities to answer this question and
+interpret the results. Consider the average treatment effect for those
+who attended college and then those who did not.
+
+
+\end{document}
